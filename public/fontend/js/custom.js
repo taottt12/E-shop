@@ -46,6 +46,7 @@ $(document).ready(function() {
             success: function(response) {
                 swat(response.status)
                 loadCart()
+                window.location.reload()
             }
         });
     });
@@ -69,6 +70,7 @@ $(document).ready(function() {
             success: function(response) {
                 swat(response.status);
                 loadwishlist();
+                window.location.reload();
             }
         });
     });
@@ -77,7 +79,12 @@ $(document).ready(function() {
         e.preventDefault();
 
         var prod_id = $(this).closest('.product_data').find('.prod_id').val();
-
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+        });
+        
         $.ajax({
             method: "POST",
             url: "delete-wishlist-item",

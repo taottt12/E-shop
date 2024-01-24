@@ -26,7 +26,7 @@
                         $total = 0;
                     @endphp
                     @foreach ($cartitems as $item)
-                        <div class="row">
+                        <div class="row product_data" >
                             <div class="col-md-2 my-auto">
                                 <img src="{{ asset('assets/upload/products/' . $item->products->image) }}" height="70px"
                                     width="70px" alt="Img here">
